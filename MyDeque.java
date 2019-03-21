@@ -24,24 +24,36 @@ public class MyDeque<E>{
 
   public String toString(){
     String output = "";
+    for(int i = 0; i < data.length; i++){
+      output += data[i] + " ";
+    }
     return output;
   }
 
   public void addFirst(E element){
+    if(start - 1 > 0){//if not past the beginning of data array
+      data[start - 1] = element;
+    } else{
 
+    }
   }
 
   public void addLast(E element){
+    if(end + 1 < data.length - 1){//if not past the end of data array
+      data[end + 1] = element;
+    } else{
+
+    }
 
   }
 
-  public E removeFirst(){
-
-  }
-
-  public E removeLast(){
-
-  }
+  // public E removeFirst(){
+  //
+  // }
+  //
+  // public E removeLast(){
+  //
+  // }
 
   public E getFirst(){
     return data[start];
@@ -51,5 +63,5 @@ public class MyDeque<E>{
     return data[end];
   }
 
-  
+
 }
