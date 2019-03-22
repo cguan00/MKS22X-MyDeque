@@ -7,6 +7,7 @@ public class MyDeque<E>{
   @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
+    //start = ??
   }
 
   @SuppressWarnings("unchecked")
@@ -21,7 +22,11 @@ public class MyDeque<E>{
   public String toString(){
     String output = "";
     for(int i = 0; i < data.length; i++){
-      output += data[i] + " ";
+      // if(data[i] != null){
+      //   output += data[i];
+      // }
+      // output += data[i];
+      output += " ";
     }
     return output;
   }
@@ -33,7 +38,7 @@ public class MyDeque<E>{
     if(start - 1 > 0){//if not past the beginning of data array
       data[start - 1] = element;
     } else{
-
+      data[data.length - 1] = element;//loop around to the other end of data array
     }
     size++;//increase size by 1
   }
@@ -45,15 +50,22 @@ public class MyDeque<E>{
     if(end + 1 < data.length - 1){//if not past the end of data array
       data[end + 1] = element;
     } else{
-
+      data[0] = element;//loop around to the beginning of data array
     }
-    size++;//decrease size by 1
+    size++;//increase size by 1
   }
 
   public E removeFirst(){
     // if(size() == 0){//throw exception if deque is empty
     //    throw new NoSuchElementException();
     // }
+    data[start] = null;
+    if(start < data.length - 1){
+      start += 1;
+    } else{
+      start = 0;//loop around to beginning of array
+    }
+    size--;//decrease size by 1
     return data[start];
   }
 
@@ -61,6 +73,13 @@ public class MyDeque<E>{
     // if(size() == 0){//throw exception if deque is empty
     //    throw new NoSuchElementException();
     // }
+    data[end] = null;
+    if(end > 0){
+      end -= 1;
+    }else{
+      end = data.length - 1;//loop around to the end of data array
+    }
+    size--;//decrease size by 1
     return data[end];
   }
 
