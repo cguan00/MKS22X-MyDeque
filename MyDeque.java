@@ -38,7 +38,7 @@ public class MyDeque<E>{
     if(element == null){
       throw new NullPointerException();//throw exception if specified element is null
     }
-    if(size() == data.length){
+    if(size() == data.length){//data array full, must resize
       resize();
     }
     if(size() != 0){//if size is not equal to 0
@@ -56,11 +56,17 @@ public class MyDeque<E>{
     if(element == null){
       throw new NullPointerException();//throw exception if specified element is null
     }
-    if(end + 1 < data.length - 1){//if not past the end of data array
-      data[end + 1] = element;
-    } else{
-      data[0] = element;//loop around to the beginning of data array
+    if(size() == data.length){//data array full, must resize
+      resize();
     }
+    if(size != 0){
+      if(end == data.length - 1){//reached end of data array, must loop around
+        end = 0;
+      } else{
+        end++;//not at the end yet, can add one to end
+      }
+    }
+    data[end] = element;//assign value at index end to the new element
     size++;//increase size by 1
   }
 
