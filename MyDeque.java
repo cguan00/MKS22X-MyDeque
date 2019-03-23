@@ -20,7 +20,10 @@ public class MyDeque<E>{
   }
 
   public String toString(){
-    String output = "";
+    if(size == 0){
+      return "{}";
+    }
+    String output = "{";
     for(int i = 0; i < data.length; i++){
       // if(data[i] != null){
       //   output += data[i];
@@ -35,11 +38,17 @@ public class MyDeque<E>{
     if(element == null){
       throw new NullPointerException();//throw exception if specified element is null
     }
-    if(start - 1 > 0){//if not past the beginning of data array
-      data[start - 1] = element;
-    } else{
-      data[data.length - 1] = element;//loop around to the other end of data array
+    if(size() == data.length){
+      resize();
     }
+    if(size() != 0){//if size is not equal to 0
+      if(start == 0){
+        start = data.length - 1;//loop around to the end of data array
+      } else{
+        start--;//decrease start by 1
+      }
+    }
+    data[start] = element;//assign the value at index start to the new element
     size++;//increase size by 1
   }
 
