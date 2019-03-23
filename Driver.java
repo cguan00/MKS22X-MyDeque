@@ -3,6 +3,8 @@ public class Driver{
     MyDeque<Integer> deque1 = new MyDeque<>();
     System.out.println(deque1);
     deque1.addFirst(5);
+    deque1.addFirst(10);
+    System.out.println(deque1.size());
     System.out.println(deque1);
   }
 }
