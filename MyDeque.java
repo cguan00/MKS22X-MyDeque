@@ -7,16 +7,31 @@ public class MyDeque<E>{
   @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
-    //start = ??
+    start = 0;
+    end = 0;
   }
 
   @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
     data = (E[])new Object[initialCapacity];
+    start = 0;
+    end = 0;
   }
 
   public int size(){
     return size;
+  }
+
+  public int start(){
+    return start;
+  }
+
+  public int end(){
+    return end;
+  }
+
+  public int dataL(){
+    return data.length;
   }
 
   public String toString(){
@@ -24,12 +39,17 @@ public class MyDeque<E>{
       return "{}";
     }
     String output = "{";
-    for(int i = 0; i < data.length; i++){
-      // if(data[i] != null){
-      //   output += data[i];
-      // }
-      // output += data[i];
-      output += " ";
+    if(start < end){//if array does not loop around
+      for(int i = start; i < end; i++){
+        output += data[i] + " ";
+      }
+    } else if(end < start){//array does loop around
+      for(int i = start; i < data.length; i++){
+        output += data[i] + " ";
+      }
+      for(int j = 0; j < end; j++){
+        output += data[j] + " ";
+      }
     }
     return output;
   }
