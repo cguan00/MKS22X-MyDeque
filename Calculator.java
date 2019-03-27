@@ -29,7 +29,11 @@ public class Calculator{
         Double first = stack.removeLast();//number on the right
         Double second = stack.removeLast();//number on the left
         stack.addLast(second / first);//divide number on left by number on right, order does matter
-      } else{
+      }else if(data[i].equals("%")){//if you want to mod
+        Double first = stack.removeLast();//number on the right
+        Double second = stack.removeLast();//number on the left
+        stack.addLast(second % first);//mod number on left by number on right, order does matter
+      }else{
         stack.addLast(Double.valueOf(data[i]));
       }
     }
