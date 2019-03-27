@@ -13,8 +13,6 @@ public class Calculator{
     MyDeque<Double> stack = new MyDeque<>();
 
     for(int i = 0; i < data.length; i++){
-      System.out.println(data[i]);
-
       if(data[i].equals("+")){
         Double first = stack.removeLast();
         Double second = stack.removeLast();
@@ -35,17 +33,15 @@ public class Calculator{
         Double second = stack.removeLast();
         stack.addLast(second / first);
       } else{
-        System.out.println("a num");
+        // System.out.println("a num");
         stack.addLast(Double.valueOf(data[i]));
-        System.out.println("num");
-        System.out.println(stack.size());
-        System.out.println(stack);
+        // System.out.println("num");
+        // System.out.println(stack.size());
+        // System.out.println(stack);
       }
     }
 
-    System.out.println(stack);
-
-    return 0.0;
+    return stack.getFirst();
   }
 
 
