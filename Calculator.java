@@ -12,33 +12,17 @@ public class Calculator{
 
     MyDeque<Double> stack = new MyDeque<>();
 
-    // MyDeque<String> stack1 = new MyDeque<>();
-    //
-    // for(int i = 0; i < data.length; i++){
-    //   stack1.addLast(data[i]);
-    // }
-    // System.out.println(stack1);
-
     for(int i = 0; i < data.length; i++){
-      // if(!data[i].equals("+") && !data[i].equals("-") && !data[i].equals("*") && !data[i].equals("/")){
-      //   stack.addLast(Double.valueOf(data[i]));
-      // }
-      // if(data[i].equals("+")){
-      //   Double first = Double.valueOf(data[i - 1]);
-      //   Double second = Double.valueOf(data[i - 2]);
-      //   // System.out.println(first + second);
-      //   stack.addLast(first + second);
-      //   // System.out.println(stack);
-      // }
+      System.out.println(data[i]);
 
       if(data[i].equals("+")){
         Double first = stack.removeLast();
         Double second = stack.removeLast();
         stack.addLast(first + second);
         // System.out.println(first + second);
-        System.out.println("add");
+        // System.out.println("add");
         // System.out.println(stack);
-      } else if(data[i].equals("-")){
+      }else if(data[i].equals("-")){
         Double first = stack.removeLast();
         Double second = stack.removeLast();
         stack.addLast(second - first);
@@ -46,12 +30,16 @@ public class Calculator{
         Double first = stack.removeLast();
         Double second = stack.removeLast();
         stack.addLast(first * second);
-      } else if(data[i].equals("-")){
+      }else if(data[i].equals("/")){
         Double first = stack.removeLast();
         Double second = stack.removeLast();
         stack.addLast(second / first);
       } else{
+        System.out.println("a num");
         stack.addLast(Double.valueOf(data[i]));
+        System.out.println("num");
+        System.out.println(stack.size());
+        System.out.println(stack);
       }
     }
 
